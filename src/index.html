@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Autoclicker</title>
+    <link rel="stylesheet" href="./style.css"/>
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="cursorPosContainer">
+        <h6>cursor pos:</h6>
+        <div class="row">
+          <p id="firstCurText"></p>
+          <p id="secondCurText"></p>
+        </div>      
+      </div>
+
+      <div class="menuContainer">
+        <div class="row">
+          <button id="createClick" class="menuBtn"><div class="column"><p>Create new click</p><img src="./img/keyC.png" alt="key c"></div></button>
+          <button id="playClick" class="menuBtn"><div class="column"><p>Start & Stop</p><img src="./img/space.png" alt="key space"></div></button>
+        </div>
+        <div class="row">
+          <input type="number" id="iteration" min="1" max="100" step="1" placeholder="Repetitions"/>
+          <input type="number" id="delay" min="50" max="10000" step="100" placeholder="Delay (milisecond)">
+        </div>
+      </div>
+
+      <div class="clickContainer"></div>
+    </div>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
