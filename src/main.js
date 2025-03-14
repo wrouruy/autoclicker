@@ -72,7 +72,7 @@ function addClick(){
 
 // call fuctions for need client
 document.getElementById('playClick').onclick = () => playClick();
-document.getElementById('createClick').onclick = () => !isPlay ? addClick() : false;
+document.getElementById('createClick').onclick = () => addClick();
 document.addEventListener('keydown', function(e){ // call fuctions with keyboard
   if(e.keyCode === 67) addClick();
   if(e.keyCode === 32) playClick();

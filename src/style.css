@@ -15,7 +15,6 @@
   justify-content: space-evenly;
   align-items: center;
   background-color: var(--white);
-
 }
 .row{
   display: flex;
@@ -28,44 +27,60 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.cursorPosContainer p::selection, 
-.cursorPosContainer h6::selection{
-  background-color: black;
-  color: var(--white);
-}
-.cursorPosContainer .row{
-  width: 120px;
-  justify-content: center;
-  gap: 10px;
-}
-.cursorPosContainer h6{
-  width: 100%;
-  font-size: 120%;
-}
-.cursorPosContainer p{
-  width: 50%;
+
+  & p::selection, 
+  & h6::selection{
+    background-color: black;
+    color: var(--white);
+  }
+  & .row{
+    width: 120px;
+    justify-content: center;
+    gap: 10px;
+  }
+  & h6{
+    width: 100%;
+    font-size: 120%;
+  }
+  & p{
+    width: 50%;
+  }
 }
 
 .menuContainer{
   display: flex;
   flex-direction: column;
   gap: 10px;
+  & .row{
+    gap: 10px;
+    justify-content: center;
+  }
+  & input[type="number"]{
+    width: 50%;
+    height: 130%;
+    outline: none;
+    border-radius: 10px;
+    border: 10px solid transparent;
+  
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      width: 20px;
+      height: 30px;
+    }
+  }
 }
-.menuContainer .row{
-  gap: 10px;
-  justify-content: center;
-}
+
 .menuBtn{
   width: 180px;
   display: flex;
   justify-content: center;
   align-items: center;
+  & img{
+    height: 30px;
+    user-select: none;
+  }
 }
-.menuBtn img{
-  height: 30px;
-  user-select: none;
-}
+
 #createClick{
   padding: 10px;
   border: 1px solid black;
@@ -78,15 +93,16 @@
   &:hover{
     transform: scale(1.02);
   }
+  & p::selection{
+    background-color: var(--white);
+    color: black;
+  }
+  & .column{
+    align-items: center;
+    gap: 5px;
+  }
 }
-#createClick p::selection{
-  background-color: var(--white);
-  color: black;
-}
-#createClick .column{
-  align-items: center;
-  gap: 5px;
-}
+
 #playClick{
   padding: 10px;
   background-color: transparent;
@@ -101,25 +117,13 @@
   &:hover{
     transform: scale(1.02);
   }
-}
-#playClick .column{
-  gap: 5px;
-}
-#playClick p::selection{
-  background-color: black;
-  color: var(--white);
-}
-.menuContainer input[type="number"]{
-  width: 50%;
-  height: 130%;
-  outline: none;
-  border-radius: 10px;
-  border: 10px solid transparent;
 
-  &::-webkit-inner-spin-button,
-  &::-webkit-outer-spin-button {
-    width: 20px;
-    height: 30px;
+  & .column{
+    gap: 5px;
+  }
+  & p::selection{
+    background-color: black;
+    color: var(--white);
   }
 }
 
@@ -137,17 +141,18 @@
 
   scrollbar-color: black transparent;
   scrollbar-width: 10%;
-}
-.clickContainer:empty{
-  &::before{
-    width: 72%;
-    text-align: center;
-    content: 'click on the "Create new click" button or press the "c" key to add a key mouse position';
+
+  &:empty{
+    &::before{
+      width: 72%;
+      text-align: center;
+      font-weight: 700;
+      content: 'click on the "Create new click" button or press the "c" key to add a key mouse position';
+    }
   }
+  &::-webkit-scrollbar-track-piece{ border-radius: 10px }
 }
-.clickContainer::-webkit-scrollbar-track-piece{
-  border-radius: 10px;
-}
+
 .clickItem{
   width: 80%;
   padding: 10px;
@@ -158,38 +163,40 @@
   color: var(--white);
   border-radius: 10px;
   font-size: 65%;
-}
-.clickItem div:not(.column){
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: 6px;
-}
-.clickItem button{
-  height: 90%;
-  aspect-ratio: 1;
-  background-color: transparent;
-  border: none;
-  background-image: url(./img/bucket.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  transition: 300ms;
-  &:hover{
-    opacity: 0.7;
+  
+  &:first-child{ margin-top: 10px }
+  & div:not(.column){
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 6px;
   }
-}
-.clickItem h1{
-  font-size: 300%;
-  font-weight: 500
-}
-.clickItem p{
-  font-size: 120%;
-}
-.clickItem h1::selection,
-.clickItem p::selection,
-.clickItem img::selection{
-  background-color: var(--white);
-  color: black;
+  & button{
+    height: 90%;
+    aspect-ratio: 1;
+    background-color: transparent;
+    border: none;
+    background-image: url(./img/bucket.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: 300ms;
+    &:hover{
+      opacity: 0.7;
+    }
+  }
+  & h1{
+    font-size: 300%;
+    font-weight: 500
+  }
+  & p{
+    font-size: 120%;
+  }
+  & h1::selection,
+  & p::selection,
+  & img::selection{
+    background-color: var(--white);
+    color: black;
+  }
 }
