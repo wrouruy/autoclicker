@@ -30,12 +30,21 @@ app.whenReady().then(() => {
     ipcMain.on('mouseClick', () => {
         robot.mouseClick();
     });
-    ipcMain.on('writeFile', (event, data) => {
-        fs.writeFile(path.join(__dirname, 'data.txt'), data, (err) => {
-            if(err) console.log(err);
+    ipcMain.on('writeFile', (event, key, data) => {
+        const filePath = path.join(__dirname, 'data.json');
+    
+        fs.readFile(filePath, 'utf-8', (err, fileData) => {
+            if(err) return console.log(err);
+            const jsonData = JSON.parse(fileData);
+            jsonData[key] = typeof data === 'string' ? JSON.parse(data) : data;
+    
+            fs.writeFile(filePath, JSON.stringify(jsonData, null, 4), (err) => {
+                if(err) console.log(err);
+            });
         });
     });
+    
     ipcMain.handle('readFile', () => {
-        return fs.readFileSync(path.join(__dirname, 'data.txt'), 'utf-8')
+        return fs.readFileSync(path.join(__dirname, 'data.json'), 'utf-8')
     });
 });
