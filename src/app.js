@@ -17,7 +17,6 @@ app.whenReady().then(() => {
         fullscreenable: false,
         icon: path.join(__dirname, 'img', 'favicon.ico')
     });
-    
     mainWindow.loadFile(path.join(__dirname, 'index.html'));
     // mainWindow.webContents.openDevTools();
 
@@ -38,12 +37,9 @@ app.whenReady().then(() => {
             const jsonData = JSON.parse(fileData);
             jsonData[key] = typeof data === 'string' ? JSON.parse(data) : data;
     
-            fs.writeFile(filePath, JSON.stringify(jsonData, null, 4), (err) => {
-                if(err) console.log(err);
-            });
+            fs.writeFileSync(filePath, JSON.stringify(jsonData, null, 4));
         });
     });
-    
     ipcMain.handle('readFile', () => {
         return fs.readFileSync(path.join(__dirname, 'data.json'), 'utf-8')
     });

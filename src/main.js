@@ -72,7 +72,6 @@ function playClick() {
   timeouts.push(stopTimeout);
 }
 function addClick(){
-  if(isPlay) return; // turn off this function if func playClick() has launched
   window.electronAPI.getMousePos().then(pos => {
     allClick.push({x: pos.x, y: pos.y})
     window.electronAPI.writeFile('allClick', JSON.stringify(allClick))
@@ -91,16 +90,16 @@ function addClick(){
 }
 
 // save iteration & delay in data.json
-document.getElementById('iteration').oninput = () => {
-  window.electronAPI.writeFile('iteration', Math.max(document.getElementById('iteration').value, 1))
-}
-document.getElementById('delay').oninput = () => {
-  window.electronAPI.writeFile('delay', Math.max(document.getElementById('delay').value, 1))
-}
+document.getElementById('iteration').oninput = () => window.electronAPI.writeFile('iteration', Math.max(document.getElementById('iteration').value, 1));
+document.getElementById('delay').oninput = () => window.electronAPI.writeFile('delay', Math.max(document.getElementById('delay').value, 1));
 
 // call fuctions for need client
 document.getElementById('playClick').onclick = () => playClick();
 document.getElementById('createClick').onclick = () => addClick();
+document.getElementById('deleteAllClick').onclick = () => {
+  window.electronAPI.writeFile('allClick', JSON.stringify(allClick = []));
+  updateClickList();
+};
 document.addEventListener('keydown', function(e){ // call fuctions with keyboard
   if(e.keyCode === 67) addClick();
   if(e.keyCode === 32) playClick();
