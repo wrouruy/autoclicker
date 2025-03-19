@@ -3,5 +3,9 @@
 2. Go to the folder of the downloaded project and open the console
 3. **Set dependencies with this command:
 ```txt
-npm install```
-5. Run the code: npm start
+npm install
+```
+5. Run the code:
+```txt
+   npm start
+```
