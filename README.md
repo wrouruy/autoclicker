@@ -4,9 +4,8 @@
 3. Run the code: ``` npm start ```
 
 ## How to Use the Application?
-<ul>
-  <li>Set new clicks by pressing the "c" key</li>
-  <li>Start the click animation by pressing the "space" key</li>
-  <li>Set the iteration and delay in the corresponding input</li>
-</ul>
-<b>Enjoy your use⭐!</b>
+  -Set new clicks by pressing the "c" key
+  -Start the click animation by pressing the "space" key
+  -Set the iteration and delay in the corresponding input
+  
+**Enjoy your use⭐!**
